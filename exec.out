@@ -2,7 +2,7 @@ yacc -d -v gram-2.y -Wyacc
 lex token.l
 gcc lex.yy.c y.tab.c -ll 
 ./a.out a.java
-python3 icg_opt.py icg.txt
+python3 optimisations.py icg.txt
 
 echo "Syntax Analysis Successful"
 echo "ICG Generated in icg.txt"

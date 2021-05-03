@@ -87,9 +87,9 @@ Statement:
 	Assign Statement
 	|T_BREAK';' {int l=strlen(br)-1; if(l == -1){printf("Error - break not Expected"); YYACCEPT;} while(br[l]!='L')l--; char s1[3]; strcpy(s1,&br[l]); fprintf(fp,"goto %s\n",s1);} Statement
 	|T_CONTINUE';' {int l=strlen(cont)-1; if(l == -1){printf("Error - continue not Expected"); YYACCEPT;} while(cont[l]!='L')l--; char s1[3]; strcpy(s1,&cont[l]); fprintf(fp,"goto %s\n",s1);} Statement
-	|T_FOR '('{$1.next = newLabel();  fprintf(fp,"%s:",$1.next); $1.next = newLabel(); $1.tr = newLabel(); strcat(cont,$1.tr); $1.fal = newLabel(); strcat(br, $1.fal); tru = $1.tr; fals = $1.fal;}VarDec{fprintf(fp,"%s:\n",$1.next);}Expression{fprintf(fp," goto %s\n", $1.tr); $1.next = newLabel(); fprintf(fp, "goto %s \n%s:\n",$1.fal,$1.next);}';'Expression{fprintf(fp,"goto %s\n%s:\n", tru,$1.tr);}')' Block {fprintf(fp,"goto %s\n%s:\n", $1.next, $1.fal);int l; l=strlen(br); while(br[l-1]!='L')l--; br[l-1]='\0'; l=strlen(cont); while(cont[l-1]!='L')l--; cont[l-1]='\0';} Statement
+	|T_FOR '('{$1.next = newLabel();  fprintf(fp,"%s:\n",$1.next); $1.next = newLabel(); $1.tr = newLabel(); strcat(cont,$1.tr); $1.fal = newLabel(); strcat(br, $1.fal); tru = $1.tr; fals = $1.fal;}VarDec{fprintf(fp,"%s:\n",$1.next);}Expression{fprintf(fp," goto %s\n", $1.tr); $1.next = newLabel(); fprintf(fp, "goto %s \n%s:\n",$1.fal,$1.next);}';'Expression{fprintf(fp,"goto %s\n%s:\n", tru,$1.tr);}')' Block {fprintf(fp,"goto %s\n%s:\n", $1.next, $1.fal);int l; l=strlen(br); while(br[l-1]!='L')l--; br[l-1]='\0'; l=strlen(cont); while(cont[l-1]!='L')l--; cont[l-1]='\0';} Statement
 	|T_RETURN Expression';' Statement
-	|T_SWITCH'('Expression {strcpy(sw,$3.v); strcpy(br,newLabel()); strcpy(snxt,newLabel());}')' '{' SwitchBlock'}'  {fprintf(fp,"%s:\n%s:\n",br,snxt);}Statement
+	|T_SWITCH'('Expression {strcpy(sw,$3.v); strcpy(br,newLabel()); strcpy(snxt,newLabel());}')' '{' SwitchBlock'}'  {fprintf(fp,"%s:\n",br);}Statement
 	|VarDec Statement
 	|ArrDec Statement
 	|ArrInit Statement
@@ -97,7 +97,7 @@ Statement:
 	;
 
 SwitchBlock:
-	SwitchLabel {if(strcmp($1.v,"default")){$$.v = newLabel(); strcpy(swt,$$.v); $1.a = newTemp(); fprintf(fp,"%s = %s == %s\n",$1.a,$1.v,snxt); fprintf(fp,"if %s goto %s\ngoto %s\n%s:\n",$1.a,snxt,$$.v,sw);} } ':'Statement {if(strcmp($1.v,"default")){strcpy(snxt,newLabel()); fprintf(fp,"goto %s\n%s:\n",snxt,swt);}} SwitchBlock
+	SwitchLabel {if(strcmp($1.v,"default")){$$.v = newLabel(); strcpy(swt,$$.v); $1.a = newTemp(); fprintf(fp,"%s = %s == %s\n",$1.a,$1.v,sw); fprintf(fp,"if %s goto %s\ngoto %s\n%s:\n",$1.a,snxt,$$.v,snxt);} } ':'Statement {if(strcmp($1.v,"default")){fprintf(fp,"%s:\n",swt);}} SwitchBlock
 	|
 	;
 

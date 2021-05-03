@@ -138,6 +138,7 @@ def constant_propagation():
     for i in range(len(list_of_lines)):
         temp_list=list_of_lines[i].split()
         l=len(temp_list)
+        #print(temp_list)
         if(l==3):
             add_to_dict(temp_list[0],temp_list[2])
         elif(l==5):

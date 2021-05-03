@@ -23,7 +23,6 @@ class Test
 			case 5: a = 0;
 					break;
 			case 6: a = 1;
-					break;
 			default: a = 2;
 		}
 		c = 5;
