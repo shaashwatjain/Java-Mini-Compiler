@@ -11,7 +11,7 @@ r3 = None
 if r3 goto L3
 goto L4 
 L5:
-r5 = 1 
+r5 = i + 1 
 i = r5
 goto L3
 L3:

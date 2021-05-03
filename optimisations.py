@@ -30,6 +30,7 @@ def no_quadriples(list_of_lines):
         elif len(tokens)==1:
             quad_lines.append('Label \t\t \t\t \t\t'+tokens[0][:-1]+'\n')
     fopt.writelines(quad_lines)
+    print("operation\tval1\t\tval2\t\tdest")
     for line in quad_lines:
         print(line)
     fopt.close()

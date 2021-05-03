@@ -11,7 +11,7 @@ Label 		 		 		L2
 if		r3		goto		L3
 goto 		 		 		L4
 Label 		 		 		L5
-=		1		 		r5
++		i		1		r5
 =		r5		 		i
 goto 		 		 		L3
 Label 		 		 		L3

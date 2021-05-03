@@ -178,16 +178,16 @@ InfixOp:
     ;
 
 InfixOp1:
-	T_OROR
-    |T_ANDAND
-	|T_EQCOMP
-    |T_NOTEQUAL	{$$.v = "!=";}
-    |'<'	{$$.v = "<";}
-    |'>'	{$$.v = ">";}
-    |T_LESSEREQ
-    |T_GREATEREQ
-    |T_LEFTSHIFT
-    |T_RIGHTSHIFT
+	T_OROR			{$$.v = "||";}
+    |T_ANDAND		{$$.v = "&&";}
+	|T_EQCOMP		{$$.v = "==";}
+    |T_NOTEQUAL		{$$.v = "!=";}
+    |'<'			{$$.v = "<";}
+    |'>'			{$$.v = ">";}
+    |T_LESSEREQ		{$$.v = "<=";}
+    |T_GREATEREQ	{$$.v = ">=";}
+    |T_LEFTSHIFT	{$$.v = "<<";}
+    |T_RIGHTSHIFT	{$$.v = ">>";}
     ;
 
 PrefixOp: 
@@ -213,7 +213,7 @@ Expression:
 Expr:
 	PrefixOp Epr		{if(strlen($1.v)==2){$$.v = newTemp(); fprintf(fp,"%s = %s %c 1\n",$$.v,$2.v,$1.v[0]); fprintf(fp,"%s = %s\n",$2.v,$$.v);} else {$$.v = newTemp(); fprintf(fp,"%s = %s %s\n",$$.v,$1.v,$2.v);} }
 	|Epr
-	|Epr PostfixOp				{$$.v = newTemp(); $$.a = newTemp(); fprintf(fp,"%s = %s\n",$$.v,$1.v); fprintf(fp,"%s = %s %c 1\n",$$.a,$1.v,$2.v[0]); fprintf(fp,"%s = %s\n",$1.v,$$.a);}
+	|Epr PostfixOp				{$$.v = newTemp(); $$.a = newTemp(); fprintf(fp,"%s = %s\n",$$.v,$1.v); fprintf(fp,"%s = %s %c 1\n",$$.a,$$.v,$2.v[0]); fprintf(fp,"%s = %s\n",$1.v,$$.a);}
 	|PrefixOp Epr PostfixOp		{$$.v = newTemp(); $$.a = newTemp(); fprintf(fp,"%s = %s %c 1\n",$$.v,$2.v,$1.v[0]); fprintf(fp,"%s = %s %c 1\n",$$.a,$2.v,$3.v[0]); fprintf(fp,"%s = %s\n",$2.v,$$.a);}
 	;
 

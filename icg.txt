@@ -14,7 +14,7 @@ if r3 goto L3
 goto L4 
 L5:
 r4 = i
-r5 = i + 1
+r5 = r4 + 1
 i = r5
 goto L3
 L3:
