@@ -1,0 +1,3 @@
+yacc -d -Wyacc sym.y
+lex sym.l
+gcc lex.yy.c y.tab.c -ll -ly

@@ -1,0 +1,11 @@
+yacc -d -v gram-2.y -Wyacc
+lex token.l
+gcc lex.yy.c y.tab.c -ll 
+./a.out a.java
+python3 icg_opt.py icg.txt
+
+echo "Syntax Analysis Successful"
+echo "ICG Generated in icg.txt"
+echo "Quadruple form generated in quad.txt"
+echo "Optimised ICG Generated in optimised_icg.txt"
+echo "Optimised Quadruple form Generated in optimised_quad.txt"
