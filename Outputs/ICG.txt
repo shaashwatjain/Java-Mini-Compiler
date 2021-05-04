@@ -2,30 +2,36 @@ b = 3
 c = 7
 a = 6
 a = 5
+r1 = 6 / 7
+r2 = c - r1
 c = r2
 d = 7
 L1:
 i = 0
 L2:
-r3 = None 
+r3 = i != 11
 if r3 goto L3
 goto L4 
 L5:
-r5 = i + 1 
+r4 = i
+r5 = r4 + 1
 i = r5
 goto L3
 L3:
-r6 = 6 
+r6 = a + 1
 a = r6
 goto L5
 L4:
 a = 5
+r7 = c + 5
+r8 = 5 == r7
 if r8 goto L7
 goto L8
 L7:
 a = 0
 goto L6
 L8:
+r9 = 6 == r7
 if r9 goto L7
 goto L9
 L7:
@@ -34,4 +40,7 @@ L9:
 a = 2
 L6:
 c = 5
+r10 = 6 * 4
+r11 = 5 * 4
+r12 = r11 + r10
 c = a[r12]

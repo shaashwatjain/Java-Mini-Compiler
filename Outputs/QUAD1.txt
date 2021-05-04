@@ -1,0 +1,36 @@
+= 3 b
+= 7 c
+= 6 a
+= 5 a
+/ 6 7 r1
+- c r1 r2
+= r2 c
+= 7 d
+= 0 i
+!= i 11 r3
+if r3 L3
+goto L4
+= i r4
++ r4 1 r5
+= r5 i
+goto L3
++ a 1 r6
+= r6 a
+goto L5
+= 5 a
++ c 5 r7
+== 5 r7 r8
+if r8 L7
+goto L8
+= 0 a
+goto L6
+== 6 r7 r9
+if r9 L7
+goto L9
+= 1 a
+= 2 a
+= 5 c
+* 6 4 r10
+* 5 4 r11
++ r11 r10 r12
+= a[r12] c

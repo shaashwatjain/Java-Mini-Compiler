@@ -123,19 +123,18 @@ Statement:
 	;
 
 
-
 VarDec:
 	Type T_ID '=' Expression
 		{
 			//printf("declaration: $$=%s $1=%s $2=%s $4=%s\n",$$, $1, $2, $4);
-			insert($2, atoi($4), $1);
+			insert($2, atoi($4), $1);	// int i = 0
 			//strcpy(type,$1);
 		}
 		DecIdenList';'
 	|Type T_ID
 		{
 			//printf("declaration: $$=%s $1=%s $2=%s $4=%s\n",$$, $1, $2, $4);
-			insert($2, 0, $1);
+			insert($2, 0, $1);		// int i;
 			//strcpy(type,$1);
 		}
 		DecIdenList';'
@@ -429,9 +428,9 @@ void funcend()
 {
 	scopered(0);
 	if(err == 0)
-	printf("Semantic Analysis Successful\n");
+	printf("Syntax Analysis Successful\n");
 	else
-	printf("Please fix Semantic Errors\n");
+	printf("Please fix Syntax Errors\n");
 	if(s->head == NULL)
 		free(s);
 }

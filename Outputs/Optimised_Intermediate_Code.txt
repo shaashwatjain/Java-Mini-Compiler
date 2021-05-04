@@ -1,0 +1,31 @@
+
+
+r3 = true
+if r3 goto L3
+goto L4
+r4 = 0
+r5 = 1
+i = 1
+goto L3
+r6 = 6
+a = 6
+goto L5
+a = 5
+r7 = 11.142857142857142
+r8 = false
+if r8 goto L7
+goto L8
+a = 0
+goto L6
+r9 = false
+if r9 goto L7
+goto L9
+a = 1
+a = 2
+c = 5
+r10 = 24
+r11 = 20
+r12 = 44
+c = a[r12]
+
+

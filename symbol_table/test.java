@@ -8,7 +8,6 @@ class Test
 		int c = 2;
 		for(a = 2; a < 10; a = a+1)
 		{
-
 			b += 1;
 		}
 		//b = a;
@@ -22,7 +21,7 @@ class Test
 			case (5): a = 5;
 					break;
 			case (6): a = 1;
-					eak;
+					break;
 
 		}
 	}
